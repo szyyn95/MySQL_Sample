@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/szyyn95/MySQL_Sample/issues"
   },
-  "homepage": "https://github.com/szyyn95/MySQL_Sample#readme"
+  "homepage": "https://github.com/szyyn95/MySQL_Sample#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "faker": "^4.1.0",
+    "mysql": "^2.15.0"
+  }
 }
