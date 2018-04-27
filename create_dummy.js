@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
 
 // Insert dummy data
 function createDummy(){
-    for (var i = 0; i < 500; i++){
+    for (var i = 0; i < 50; i++){
         var new_user = {email: faker.internet.email(), created_at: faker.date.past(), firstname: faker.name.firstName(), lastname: faker.name.lastName()};
         connection.query("INSERT INTO users SET ?", new_user, function(error, result){
             if (error){
@@ -18,8 +18,8 @@ function createDummy(){
         });
     }
     
-    for (var i = 0; i < 1000; i++){
-        var new_transaction = {user_id: Math.floor(Math.random() * 500) + 1, donation_amount: Math.random() * 100};
+    for (var i = 0; i < 100; i++){
+        var new_transaction = {user_id: Math.floor(Math.random() * 50) + 1, donation_amount: Math.random() * 1000};
         connection.query("INSERT INTO donations SET ?", new_transaction, function(error, result){
             if (error){
                 throw error;

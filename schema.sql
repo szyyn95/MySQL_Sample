@@ -4,7 +4,7 @@ USE join_us;
 
 CREATE TABLE users(
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255),
+    email VARCHAR(255) UNIQUE NOT NULL,
     created_at TIMESTAMP DEFAULT NOW(),
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL
