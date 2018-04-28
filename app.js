@@ -97,7 +97,17 @@ app.post("/donate", check_valid_amount, function(req, res){
 });
 
 app.get("/leaderboard", function(req, res){
-    res.render("leaderboard.ejs");
+    var query = "SELECT firstname, lastname, TRUNCATE(SUM(donation_amount), 2) AS amount FROM users JOIN donations ON users.id=donations.user_id GROUP BY id ORDER BY amount DESC LIMIT 10;\
+                 SELECT firstname, lastname, DATE(created_at) AS joining_time FROM users ORDER BY created_at LIMIT 10;";
+    connection.query(query, function(error, results, fields){
+        if (error){
+            req.flash("error", error.sqlMessage);
+            res.redirect("back");
+        }
+        else{
+            res.render("leaderboard.ejs", {max_amount: results[0], oldest_user: results[1]});
+        }
+    });
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
